@@ -4,6 +4,7 @@ import { Routes, RouterModule } from "@angular/router";
 // Import Containers
 import { DefaultLayoutComponent } from "./containers";
 import { LoginComponent } from "./views/login/login.component";
+import { AdminGuard } from "./admin.guard";
 
 export const routes: Routes = [
   {
@@ -27,6 +28,7 @@ export const routes: Routes = [
     children: [
       {
         path: "dashboard",
+        canActivate: [AdminGuard],
         loadChildren: () =>
           import("./views/dashboard/dashboard.module").then(
             m => m.DashboardModule
