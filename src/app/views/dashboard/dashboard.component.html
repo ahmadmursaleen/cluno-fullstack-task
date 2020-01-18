@@ -1,42 +1,66 @@
 <div class="animated fadeIn">
-  <div class="row">
-    <div class="col-sm-6 col-lg-3">
-      <div class="card">
-        <div class="card-header">This is card's header - 1</div>
-        <div class="card-body">This is card's body</div>
-        <div class="card-footer">This is card's footer</div>
-      </div>
+  <div class="row" style="margin-bottom: 20px;">
+    <div class="card" class="col-sm-12 col-lg-12">
+      <h2 class="card-header">
+        Filtering
+        <div
+          class="btn-group"
+          role="group"
+          aria-label="Basic example"
+          style="float: right;"
+        >
+          <button
+            type="button"
+            class="btn btn-secondary"
+            (click)="orderBy('asc')"
+          >
+            Ascending
+          </button>
+          <button
+            type="button"
+            class="btn btn-secondary"
+            (click)="orderBy('dsc')"
+          >
+            Descending
+          </button>
+        </div>
+      </h2>
     </div>
-    <!--/.col-->
-    <div class="col-sm-6 col-lg-3">
-      <div class="card">
-        <div class="card-header">This is card's header - 2</div>
-        <div class="card-body">This is card's body</div>
-        <div class="card-footer">This is card's footer</div>
-      </div>
-    </div>
-    <!--/.col-->
-    <div class="col-sm-6 col-lg-3">
-      <div class="card">
-        <div class="card-header">This is card's header - 3</div>
-        <div class="card-body">This is card's body</div>
-        <div class="card-footer">This is card's footer</div>
-      </div>
-    </div>
-    <!--/.col-->
-    <div class="col-sm-6 col-lg-3">
-      <div class="card">
-        <div class="card-header">This is card's header - 4</div>
-        <div class="card-body">This is card's body</div>
-        <div class="card-footer">This is card's footer</div>
-      </div>
-    </div>
-    <!--/.col-->
   </div>
-  <!--/.row-->
-  <div class="card">
-    <div class="card-header">This is card's header</div>
-    <div class="card-body">This is card's body</div>
-    <div class="card-footer">This is card's footer</div>
+</div>
+
+<div class="animated fadeIn">
+  <div class="row">
+    <ng-container *ngFor="let item of cars['Items']">
+      <div class="col-sm-6 col-lg-3" *ngIf="item['visible']['BOOL'] == true">
+        <div class="card">
+          <div class="card-header">
+            <h4>{{ item["teaser"]["M"]["title"]["S"] }}</h4>
+
+            <span class="badge bg-success">
+              {{ item["pricing"]["M"]["price"]["N"] }} pro Monat</span
+            >
+          </div>
+          <div class="card-body">
+            <img
+              src="{{ item['teaser']['M']['teaserImage']['S'] }}"
+              alt=""
+              style="max-width:100%;
+              max-height:100%;"
+            />
+          </div>
+          <div class="card-footer">
+            <button
+              type="button"
+              class="btn btn-outline-info"
+              (click)="carDetails(item['id']['S'])"
+            >
+              <b>Details</b>
+            </button>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+    <!--/.row-->
   </div>
 </div>
