@@ -18,6 +18,14 @@ import { DefaultLayoutComponent } from "./containers";
 
 const APP_CONTAINERS = [DefaultLayoutComponent];
 
+// Imported Modules
+
+import { AngularFireModule } from "@angular/fire";
+import { AngularFireAuthModule } from "@angular/fire/auth";
+
+import { HttpClientModule } from "@angular/common/http";
+import { CommonModule } from "@angular/common";
+
 import {
   AppAsideModule,
   AppBreadcrumbModule,
@@ -33,6 +41,19 @@ import { AppRoutingModule } from "./app.routing";
 import { BsDropdownModule } from "ngx-bootstrap/dropdown";
 import { TabsModule } from "ngx-bootstrap/tabs";
 import { ChartsModule } from "ng2-charts";
+import { LoginComponent } from "./views/login/login.component";
+
+// Firebase configuration object
+const firebaseConfig = {
+  apiKey: "AIzaSyCXS1UxiZYKKrT_jDaWsMtdB4Rqvf8ATbQ",
+  authDomain: "cluno-final.firebaseapp.com",
+  databaseURL: "https://cluno-final.firebaseio.com",
+  projectId: "cluno-final",
+  storageBucket: "cluno-final.appspot.com",
+  messagingSenderId: "130825655742",
+  appId: "1:130825655742:web:21426b03ca3ba685a795ef",
+  measurementId: "G-0X0F5XMW6Y"
+};
 
 @NgModule({
   imports: [
@@ -47,9 +68,13 @@ import { ChartsModule } from "ng2-charts";
     PerfectScrollbarModule,
     BsDropdownModule.forRoot(),
     TabsModule.forRoot(),
-    ChartsModule
+    ChartsModule,
+    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireAuthModule,
+    HttpClientModule,
+    CommonModule
   ],
-  declarations: [AppComponent, ...APP_CONTAINERS],
+  declarations: [AppComponent, ...APP_CONTAINERS, LoginComponent],
   providers: [
     {
       provide: LocationStrategy,
