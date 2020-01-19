@@ -15,7 +15,7 @@ password: cluno12345
 ## Frontend 
 
 1. The frontend is hosted on Firebase with Firebase authentication. 
-2. It is an angular application based on the core ui theme. 
+2. It is an angular application based on the core ui theme.[https://coreui.io/angular/]
 3. Some of the salient features of the front end implementation include services using Dependency Injections to resue business logic, admin guards to prevent views from non logged in users, using observables from the rxjs library to access the REST API with the http client module and lazy loading etc.
 
 ## Backend
