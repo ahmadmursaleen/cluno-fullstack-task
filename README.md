@@ -7,9 +7,10 @@ Please test the implementation at the following link.
 https://cluno-final.firebaseapp.com/#/dashboard
 
 To log in use the the following credentials.
+<br>
 
 username: test@cluno.com
-passwors: cluno12345
+password: cluno12345
 
 ## Frontend 
 
