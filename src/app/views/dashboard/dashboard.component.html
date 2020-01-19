@@ -25,11 +25,19 @@
           </button>
         </div>
       </h2>
+      <div class="btn-group" role="group" aria-label="Basic example">
+        <button type="button" class="btn btn-secondary" (click)="getMin()">
+          Min
+        </button>
+        <button type="button" class="btn btn-secondary" (click)="getMax()">
+          Max
+        </button>
+      </div>
     </div>
   </div>
 </div>
 
-<div class="animated fadeIn">
+<div class="animated fadeIn" *ngIf="minToggler == false && maxToggler == false">
   <div class="row">
     <ng-container *ngFor="let item of cars['Items']">
       <div class="col-sm-6 col-lg-3" *ngIf="item['visible']['BOOL'] == true">
@@ -61,6 +69,74 @@
         </div>
       </div>
     </ng-container>
+    <!--/.row-->
+  </div>
+</div>
+
+<div class="animated fadeIn" *ngIf="minToggler == true">
+  <div class="row">
+    <div class="col-sm-6 col-lg-3">
+      <div class="card">
+        <div class="card-header">
+          <h4>{{ minCar["teaser"]["M"]["title"]["S"] }}</h4>
+
+          <span class="badge bg-success">
+            {{ minCar["pricing"]["M"]["price"]["N"] }} pro Monatpro Monat</span
+          >
+        </div>
+        <div class="card-body">
+          <img
+            src="{{ minCar['teaser']['M']['teaserImage']['S'] }}"
+            alt=""
+            style="max-width:100%;
+            max-height:100%;"
+          />
+        </div>
+        <div class="card-footer">
+          <button
+            type="button"
+            class="btn btn-outline-info"
+            (click)="carDetails(minCar['id']['S'])"
+          >
+            <b>Details</b>
+          </button>
+        </div>
+      </div>
+    </div>
+    <!--/.row-->
+  </div>
+</div>
+
+<div class="animated fadeIn" *ngIf="maxToggler == true">
+  <div class="row">
+    <div class="col-sm-6 col-lg-3">
+      <div class="card">
+        <div class="card-header">
+          <h4>{{ maxCar["teaser"]["M"]["title"]["S"] }}</h4>
+
+          <span class="badge bg-success">
+            {{ maxCar["pricing"]["M"]["price"]["N"] }} pro Monatpro Monat</span
+          >
+        </div>
+        <div class="card-body">
+          <img
+            src="{{ maxCar['teaser']['M']['teaserImage']['S'] }}"
+            alt=""
+            style="max-width:100%;
+            max-height:100%;"
+          />
+        </div>
+        <div class="card-footer">
+          <button
+            type="button"
+            class="btn btn-outline-info"
+            (click)="carDetails(maxCar['id']['S'])"
+          >
+            <b>Details</b>
+          </button>
+        </div>
+      </div>
+    </div>
     <!--/.row-->
   </div>
 </div>
