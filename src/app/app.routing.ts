@@ -5,6 +5,7 @@ import { Routes, RouterModule } from "@angular/router";
 import { DefaultLayoutComponent } from "./containers";
 import { LoginComponent } from "./views/login/login.component";
 import { AdminGuard } from "./admin.guard";
+import { CarDetailsComponent } from "./views/car-details/car-details.component";
 
 export const routes: Routes = [
   {
@@ -33,6 +34,14 @@ export const routes: Routes = [
           import("./views/dashboard/dashboard.module").then(
             m => m.DashboardModule
           )
+      },
+      {
+        path: "cardetails/:id",
+        canActivate: [AdminGuard],
+        component: CarDetailsComponent,
+        data: {
+          title: "Car Details"
+        }
       }
     ]
   }
